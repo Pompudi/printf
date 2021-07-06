@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <unistd.h>
+#include "libft
 
 typedef struct s_flags {
 	int	type;
@@ -15,5 +16,6 @@ typedef struct s_flags {
 
 int	ft_printf(const char *fmt, ...);
 int process(const char *fmt, va_list ap);
+t_flag	*initializations_struct(t_flag *fl);
 
 #endif
