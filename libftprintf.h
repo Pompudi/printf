@@ -3,19 +3,22 @@
 
 #include <stdarg.h>
 #include <unistd.h>
-#include "libft
+#include <stdarg.h>
+#include "libft/libft.h"
 
-typedef struct s_flags {
-	int	type;
-	itn	width;
-	int	minus;
-	int	zero;
-	int	dot;
-	int	star;
-}				t_flags
-
-int	ft_printf(const char *fmt, ...);
+int ft_printf(const char *fmt, ...);
 int process(const char *fmt, va_list ap);
-t_flag	*initializations_struct(t_flag *fl);
+int ft_isformat(char c);
+int	parse(int *i, char *str, va_list ap);
+int	parse_type(int c, va_list args);
+int	parse_int(int i);
+int	parse_uint(unsigned int ui);
+int	count_ui(unsigned int n);
+char	*ft_itoa_uint(unsigned int u);
+int	parse_string(char *str);
+int	parse_char(char c);
+int	parse_x(unsigned int x, int flag_reg);
+char	*itoa_x(unsigned long x, int flag_r);
+int	count_x(unsigned long n);
 
 #endif

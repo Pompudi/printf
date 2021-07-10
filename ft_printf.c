@@ -1,68 +1,40 @@
 #include "libftprintf.h"
-#include <stdarg.h>
-#include "libft/libft.h"
 
-t_flag	*initializations_struct(t_flag *fl)
-{
-	fl->type = 0;
-	fl->width = 0;
-	fl->minus = 0;
-	fl->zero = 0;
-	fl->dot = -1;
-	fl->star = 0;
-	return (fl);
-}
-
-int	ft_isformat(char c)
+int ft_isformat(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u')
 		|| c =='x' || c == 'X');
 }
 
-int ft_isflag(char c)
+int parse(int *i, char *str, va_list ap)
 {
-	return (c == '.' || c == '*' || c == '-' || c == '0');
-}
-
-int parse_flag(t_flags fl, int i, char *str, va_list ap)
-{
-	int count = 0;
-	if ()
-}
-
-int	skip_form(char *fmt, int i)
-{
-	while (strchr("0.*-d=cspdiuxX", fmt[i]))
-		i++;
-	return (i);
+	if (ft_isformat(str[*i]))
+		return (parse_type(str[*i], ap));
+	else
+	    return (write(1, '%', 1));
 }
 
 int process(char *fmt, va_list ap)
 {
 	int	i;
 	int	count;
-	t_flags flags;
 
 	count = 0;
 	flags = (*t_flag)malloc(sizeof(t_struct));
 	i = 0;
 	while (fmt[i])
 	{
-		if (fmt[i] == '%' && fmt[i])
+		if (fmt[i] == '%' && fmt[i + 1])
 		{
-			flags = initializations_struct(flags);
-			count += parse_flag(flags, ++i, fmt, ap);
-			i = skip_form(fmt, i);
-			free(flags);
-		}
-		else
-		{
+            i++;
+            count += parse(fmt, &i, ap);
+        }
+		else if(fmt[i] != '%')
 			count += write(1, &fmt[i], 1);
-		}
+		i++;
 	}
 	return (coutn);
 }
-
 
 int	ft_printf(const char *fmt, ...)
 {

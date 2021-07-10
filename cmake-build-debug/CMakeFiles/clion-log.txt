@@ -1,1 +1,1 @@
-CMakeLists.txt not found in /home/milena/CLionProjects/ft_printf Select CMakeLists.txt
+CMakeLists.txt not found in C:\Users\Home\Desktop\printf Select CMakeLists.txt
